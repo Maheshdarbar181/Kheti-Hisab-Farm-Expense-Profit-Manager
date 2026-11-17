@@ -1693,7 +1693,6 @@
           ⬆️ <span data-t="restore_json">બેકઅપ રીસ્ટોર કરો</span>
           <input type="file" id="importJsonInput" accept=".json" style="display:none;" />
         </label>
-        <button class="btn btn-outline" id="loadSampleBtn" type="button" style="justify-content:flex-start;">🌱 <span data-t="load_sample">નમૂના ડેટા ઉમેરો</span></button>
         <button class="btn btn-danger" id="clearAllBtn" type="button" style="justify-content:flex-start;">🗑️ <span data-t="clear_all">બધો ડેટા સાફ કરો</span></button>
       </div>
       <div class="modal-footer">
@@ -2641,45 +2640,6 @@
         }
       };
 
-      function getSampleData() {
-        return {
-          lang: 'en',
-          fields: [
-            { id: 'f1', owner: 'મહેશભાઈ પરમાર', name: 'વડવાળું ખેતર', area: '4 વિઘા', partner: '', partnerShare: 0 },
-            { id: 'f2', owner: 'સુરેશભાઈ પરમાર', name: 'નદી કાંઠાનું ખેતર', area: '5 વિઘા', partner: '', partnerShare: 0 },
-            { id: 'f3', owner: 'સુરેશ સોલંકી', name: 'રૂદણીયું', area: '5 વિઘા', partner: 'મહેશભાઈ પરમાર', partnerShare: 50, sharedActivities: ['plowing', 'seeds', 'fertilizer', 'irrigation'] }
-          ],
-          crops: [
-            { id: 'c1', fieldId: 'f1', name: 'કપાસ (Cotton)', season: 'ખરીફ 2026', sowingDate: '2026-06-15', status: 'completed' },
-            { id: 'c2', fieldId: 'f2', name: 'ડાંગર (Paddy)', season: 'ખરીફ 2026', sowingDate: '2026-07-02', status: 'active' },
-            { id: 'c3', fieldId: 'f3', name: 'તમાકુ (Tobacco)', season: 'રવિ 2026', sowingDate: '2026-08-25', status: 'completed' }
-          ],
-          expenses: [
-            { id: 'e1', cropId: 'c1', date: '2026-06-10', category: 'plowing', amount: 3200, paidBy: 'owner', notes: 'ટ્રેક્ટર ખેડ અને રાપ' },
-            { id: 'e2', cropId: 'c1', date: '2026-06-15', category: 'seeds', amount: 4500, paidBy: 'owner', notes: 'બીટી કપાસ બિયારણ 5 પેકેટ' },
-            { id: 'e3', cropId: 'c1', date: '2026-07-20', category: 'fertilizer', amount: 3800, paidBy: 'owner', notes: 'યુરિયા અને DAP ખાતર' },
-            { id: 'e4', cropId: 'c1', date: '2026-08-18', category: 'pesticide', amount: 2700, paidBy: 'owner', notes: 'ચૂસિયા અને ઈયળ માટે દવા છંટકાવ' },
-            { id: 'e5', cropId: 'c1', date: '2026-10-25', category: 'harvest', amount: 6500, paidBy: 'owner', notes: 'કપાસ વીણવાની મજૂરી' },
-            { id: 'e6', cropId: 'c2', date: '2026-06-28', category: 'plowing', amount: 4000, paidBy: 'owner', notes: 'ઘારું અને ક્યારી તૈયારી' },
-            { id: 'e7', cropId: 'c2', date: '2026-07-02', category: 'labor', amount: 5200, paidBy: 'owner', notes: 'ડાંગર રોપણી મજૂરી' },
-            { id: 'e8', cropId: 'c2', date: '2026-08-10', category: 'fertilizer', amount: 3100, paidBy: 'owner', notes: 'ખાતર અને ઝીંક' },
-            { id: 'e9', cropId: 'c3', date: '2026-08-18', category: 'plowing', amount: 4500, paidBy: 'partner', notes: 'ટ્રેક્ટર ખેડ અને પાળા બાંધવા' },
-            { id: 'e10', cropId: 'c3', date: '2026-08-22', category: 'seeds', amount: 3500, paidBy: 'partner', notes: 'તમાકુ ધરુ / બિયારણ' },
-            { id: 'e11', cropId: 'c3', date: '2026-09-15', category: 'fertilizer', amount: 8000, paidBy: 'owner', notes: 'DAP અને યુરિયા ખાતર' },
-            { id: 'e12', cropId: 'c3', date: '2026-09-28', category: 'irrigation', amount: 4000, paidBy: 'partner', notes: 'પિયત / પાણી ખર્ચ' },
-            { id: 'e13', cropId: 'c3', date: '2026-10-15', category: 'weeding', amount: 4500, paidBy: 'partner', notes: 'નીંદણ અને પીલા કાપવા (અંગત)' },
-            { id: 'e14', cropId: 'c3', date: '2026-11-05', category: 'harvest', amount: 7500, paidBy: 'partner', notes: 'તમાકુ કાપણી મજૂરી (અંગત)' }
-          ],
-          sales: [
-            { id: 's1', cropId: 'c1', date: '2026-11-04', buyer: 'મહેમદાવાદ APMC', qty: 42, unit: 'મણ', rate: 1480, total: 62160 },
-            { id: 's2', cropId: 'c3', date: '2026-11-12', buyer: 'આણંદ તમાકુ માર્કેટ', qty: 75, unit: 'મણ', rate: 1600, total: 120000 }
-          ],
-          advances: [
-            { id: 'a1', cropId: 'c3', date: '2026-08-20', amount: 5000, notes: 'ખાતર-બિયારણ ખર્ચ માટે એડવાન્સ' }
-          ]
-        };
-      }
-
       let state = loadState();
       let activeTab = 'dashboard';
       let selectedOwner = null;
@@ -2721,7 +2681,7 @@
             }
           }
         } catch (e) {}
-        return getSampleData();
+        return normalizeState({ lang: 'en' });
       }
 
       function saveState() {
@@ -3820,18 +3780,10 @@
         btn.classList.toggle('hidden', !(activeTab === 'reports' || hasFilter));
       }
 
-      function updateLoadSampleVisibility() {
-        const btn = document.getElementById('loadSampleBtn');
-        if (!btn) return;
-        const hasAnyData = (state.fields.length > 0 || state.crops.length > 0 || state.expenses.length > 0 || state.sales.length > 0);
-        btn.classList.toggle('hidden', hasAnyData);
-      }
-
       function renderAll() {
         applyLanguage();
         populateFilters();
         updatePrintFilteredBtnVisibility();
-        updateLoadSampleVisibility();
         populateModalSelects();
         const ctx = getFilteredContext();
         renderDashboard(ctx);
@@ -4799,7 +4751,6 @@
 
       document.getElementById('menuBackupBtn').addEventListener('click', () => {
         closeHeaderMenu();
-        updateLoadSampleVisibility();
         openModal('backupModal');
       });
 
@@ -5828,18 +5779,6 @@
         a.download = `kheti_hisab_${todayISO()}.csv`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-      });
-
-      document.getElementById('loadSampleBtn').addEventListener('click', () => {
-        openConfirm(t('msg_confirm_sample'), () => {
-          state = getSampleData();
-          selectedOwner = null;
-          selectedFieldId = null;
-          saveState();
-          closeModal('backupModal');
-          renderAll();
-          showToast(t('saved_msg'));
-        });
       });
 
       document.getElementById('clearAllBtn').addEventListener('click', () => {
